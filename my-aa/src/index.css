@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+ 
+@layer base {
+  :root {
+    /* 🎨 Light Theme Colors */
+    --color-primary: #1b1b1b;
+    --color-secondary: #a5b4fc;
+    --color-accent: #6366f1;
+    --color-cream: #f9fafb;
+    --color-dark: #111827;
+
+    /* ✍️ Fonts */
+    --font-body: "Inter", sans-serif;
+    --font-display: "Poppins", sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* 🌙 Dark Theme Colors */
+      --color-primary: #f9fafb;
+      --color-secondary: #6366f1;
+      --color-accent: #a5b4fc;
+      --color-cream: #0f0f0f;
+      --color-dark: #f3f4f6;
+    }
+  }
+
+  html {
+    font-family: var(--font-body);
+    background-color: var(--color-cream);
+    color: var(--color-dark);
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+}
+
+/* ====================================== */
+/* 🧩 Components Layer — Reusable Elements */
+/* ====================================== */
+@layer components {
+  .btn-primary {
+    @apply inline-block bg-[var(--color-primary)] text-white font-semibold py-2 px-6 rounded-xl transition-colors duration-200 ease-in-out;
+  }
+
+  .btn-primary:hover {
+    @apply bg-[var(--color-secondary)];
+  }
+
+  .btn-outline {
+    @apply inline-block border-2 border-[var(--color-primary)] text-[var(--color-primary)] font-semibold py-2 px-6 rounded-xl transition-colors duration-200 ease-in-out;
+  }
+
+  .btn-outline:hover {
+    @apply bg-[var(--color-primary)] text-white;
+  }
+
+  /* 🌙 Dark Mode Overrides */
+  @media (prefers-color-scheme: dark) {
+    .btn-primary {
+      @apply bg-[var(--color-dark)] text-[var(--color-cream)];
+    }
+
+    .btn-primary:hover {
+      @apply bg-[var(--color-secondary)] text-[var(--color-dark)];
+    }
+
+    .btn-outline {
+      @apply border-[var(--color-accent)] text-[var(--color-accent)];
+    }
+
+    .btn-outline:hover {
+      @apply bg-[var(--color-accent)] text-[var(--color-dark)];
+    }
+  }
+}
+
+/* ============================= */
+/* ⚒️ Utilities Layer (Optional) */
+/* ============================= */
+@layer utilities {
+  .shadow-soft {
+    @apply shadow-lg shadow-gray-200/50;
+  }
+
+  .section-padding {
+    @apply py-16 px-4 md:px-8;
+  }
+}
